@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "421721256372",
+    "firebase_url": "https://splitbill-ad769.firebaseio.com",
+    "project_id": "splitbill-ad769",
+    "storage_bucket": "splitbill-ad769.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:421721256372:android:c6707bd4e5a987df",
+        "android_client_info": {
+          "package_name": "cimb.niaga.app.billsplit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "421721256372-6l12v8fn9iguqbakbskvi4r8qphebfcs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "cimb.niaga.app.billsplit",
+            "certificate_hash": "C53904D4E1CC43FA114E1346BAA0152EDA9FF475"
+          }
+        },
+        {
+          "client_id": "421721256372-gmkeb5llgbj4i3vhg9mgb15um60gbq2h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7Q7PkferLFOvr1o7ZaE4c7BKsRGu6ciI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "421721256372-gmkeb5llgbj4i3vhg9mgb15um60gbq2h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -54,10 +55,10 @@ public class LoginActivity extends AppCompatActivity {
         submit_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                if(validate())
-//                {
+                if(validate())
+                {
                     nextActivity();
-//                }
+                }
             }
         });
     }
@@ -117,13 +118,16 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    public final static boolean isValidEmail(CharSequence target) {
+        return !TextUtils.isEmpty(target) && android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
+    }
+
     public boolean validate() {
         boolean valid = true;
 
         String _nickname = nickname.getText().toString();
         String _phone = phone.getText().toString();
         String _email = email.getText().toString();
-
 
         if (_nickname.isEmpty()) {
             nickname.setError("between 4 and 10 alphanumeric characters");
@@ -140,10 +144,17 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         if (_email.isEmpty()) {
+            email.setError("please insert your email");
+            valid = false;
+        }
+
+        else if (!isValidEmail(_email)){
             email.setError("please insert your valid email");
             valid = false;
-        } else {
-            email.setError(null);
+        }
+
+        else {
+            phone.setError(null);
         }
 
         return valid;

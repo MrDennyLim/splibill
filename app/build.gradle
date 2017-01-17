@@ -24,15 +24,20 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:24.1.1'
-    compile 'com.android.support:design:24.1.1'
+    compile files('libs/android-async-http-1.4.6.jar')
+    compile files('libs/apache-commons-codec-1.4.jar')
+    compile 'com.android.support:appcompat-v7:24.2.1'
+    compile 'com.android.support:design:24.2.1'
     compile 'info.hoang8f:fbutton:1.0.5'
     compile 'com.baoyz.pullrefreshlayout:library:1.2.0'
     compile 'com.gordonwong:material-sheet-fab:1.2'
     compile 'com.android.support:cardview-v7:24.2.1'
     compile 'org.apache.httpcomponents:httpcore:4.3.2'
     compile 'com.github.d-max:spots-dialog:0.7@aar'
+    compile 'com.google.firebase:firebase-messaging:10.0.1'
+    compile 'com.google.firebase:firebase-core:10.0.1'
     testCompile 'junit:junit:4.12'
-    compile files('libs/android-async-http-1.4.6.jar')
-    compile files('libs/apache-commons-codec-1.4.jar')
 }
+
+
+apply plugin: 'com.google.gms.google-services'

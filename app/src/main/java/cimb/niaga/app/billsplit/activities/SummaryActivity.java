@@ -11,6 +11,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
@@ -20,6 +21,8 @@ import android.widget.ExpandableListView.OnGroupClickListener;
 import android.widget.ExpandableListView.OnGroupCollapseListener;
 import android.widget.ExpandableListView.OnGroupExpandListener;
 import android.widget.Toast;
+
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import cimb.niaga.app.billsplit.R;
 import cimb.niaga.app.billsplit.adapter.ExpandableListAdapter;
@@ -115,11 +118,10 @@ public class SummaryActivity extends AppCompatActivity {
 
     public void nextActivity()
     {
-        Intent i = new Intent(SummaryActivity.this, HomeActivity.class);
-        Toast.makeText(getApplication(), "Success", Toast.LENGTH_LONG).show();
-        startActivity(i);
-        finish();
-
+        String tkn = FirebaseInstanceId.getInstance().getToken();
+        Toast.makeText(SummaryActivity.this, "Current token ["+tkn+"]",
+                Toast.LENGTH_LONG).show();
+        Log.d("App", "Token ["+tkn+"]");
     }
 
     /*
