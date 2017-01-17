@@ -3,6 +3,7 @@ package cimb.niaga.app.billsplit.fragment;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,17 +46,29 @@ public class FragmentOwed extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.owed_fragment, container, false);
+
+
+        owed_event.add("Solaria");
+        owed_event.add("Starbucks");
+        owed_price.add("Rp 145.000,00");
+        owed_price.add("Rp 78.000,00");
+
         prgLoading = (ProgressBar) view.findViewById(R.id.prgLoading);
         listEvent = (ListView) view.findViewById(R.id.listEvent);
         txtAlert = (TextView) view.findViewById(R.id.txtAlert);
 
+        prgLoading.setVisibility(View.GONE);
         owedAdapter = new OwedAdapter(getActivity());
+        listEvent.setAdapter(owedAdapter);
 
-        getList();
+//        getList();
 
         listEvent.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+                FragmentManager fm = getFragmentManager();
+                FragmentOwedDetail dialogFragment = new FragmentOwedDetail ();
+                dialogFragment.show(fm, "Owed Detail");
 
             }
         });

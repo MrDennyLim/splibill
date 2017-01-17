@@ -91,18 +91,10 @@ public class CameraFragment extends Fragment {
     MyDragEventListener myDragEventListener = new MyDragEventListener();
 
     String[] month ={
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July",
-            "August",
-            "September",
-            "October",
-            "November",
-            "December"};
+            "50.000",
+            "45.000",
+            "6.000",
+            "7.000"};
 
     List<String> droppedList;
     ArrayAdapter<String> droppedAdapter;
@@ -116,10 +108,25 @@ public class CameraFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.camera_fragment, container, false);
 
+//        listPrice = (ListView) view.findViewById(R.id.list_price);
+        img_bill = (ImageView) view.findViewById(R.id.img_bill);
+//        tabs = (TabLayout) view.findViewById(R.id.tabs);
+//        pager = (ViewPager) view.findViewById(R.id.pager);
         targetLayout = (LinearLayout)view.findViewById(R.id.targetlayout);
         listSource = (ListView)view.findViewById(R.id.sourcelist);
         listTarget = (ListView)view.findViewById(R.id.targetlist);
-        comments = (TextView)view.findViewById(R.id.comments);
+//        comments = (TextView)view.findViewById(R.id.comments);
+
+        String fileName = "temp.jpg";
+
+        ContentValues values = new ContentValues();
+        values.put(MediaStore.Images.Media.TITLE, fileName);
+
+        mCapturedImageURI = getActivity().getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+
+        Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, mCapturedImageURI);
+        startActivityForResult(intent, RESULT_CAMERA);
 
         // Create and set the tags for the Buttons
         final String SOURCELIST_TAG = "listSource";
@@ -129,17 +136,6 @@ public class CameraFragment extends Fragment {
         listSource.setTag(SOURCELIST_TAG);
         listTarget.setTag(TARGETLIST_TAG);
         targetLayout.setTag(TARGETLAYOUT_TAG);
-
-        listSource.setAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, month));
-        listSource.setOnItemLongClickListener(listSourceItemLongClickListener);
-
-
-        droppedList = new ArrayList<String>();
-        droppedAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, droppedList);
-        listTarget.setAdapter(droppedAdapter);
-
-        listSource.setOnDragListener(myDragEventListener);
-        targetLayout.setOnDragListener(myDragEventListener);
 
         return view;
     }
@@ -180,6 +176,70 @@ public class CameraFragment extends Fragment {
         }
     }
 
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch(requestCode) {
+            case RESULT_CAMERA:
+                if(resultCode == RESULT_OK && mCapturedImageURI!=null){
+                    String[] projection = {MediaStore.Images.Media.DATA};
+                    Cursor cursor = getActivity().getContentResolver().query(mCapturedImageURI, projection, null, null, null);
+                    cursor.moveToFirst();
+                    int column_index_data = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+                    String filePath = cursor.getString(column_index_data);
+
+                    File photoFile = new File(filePath);
+                    final GeneralizeImage mGI = new GeneralizeImage(getActivity(),filePath);
+                    //getOrientationImage();
+                    img_bill.setVisibility(View.VISIBLE);
+                    setImageProfPic(photoFile);
+
+                    listSource.setAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, month));
+                    listSource.setOnItemLongClickListener(listSourceItemLongClickListener);
+
+                    droppedList = new ArrayList<String>();
+                    droppedAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, droppedList);
+                    listTarget.setAdapter(droppedAdapter);
+
+                    listSource.setOnDragListener(myDragEventListener);
+                    targetLayout.setOnDragListener(myDragEventListener);
+                }
+                else{
+                    Toast.makeText(getActivity(), "Try Again", Toast.LENGTH_LONG).show();
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void setImageProfPic(File filenya){
+        Bitmap bm = BitmapFactory.decodeResource(getResources(), R.mipmap.user_unknown_menu);
+        RoundImageTransformation roundedImage = new RoundImageTransformation(bm);
+
+        Picasso mPic;
+        if(MyAPIClient.PROD_FLAG_ADDRESS)
+            mPic = MyPicasso.getImageLoader(getActivity());
+        else
+            mPic= Picasso.with(getActivity());
+
+        if(!filenya.exists()){
+            mPic.load(R.mipmap.user_unknown_menu)
+                    .memoryPolicy(MemoryPolicy.NO_CACHE)
+                    .networkPolicy(NetworkPolicy.NO_CACHE)
+                    .error(roundedImage)
+                    .fit().centerInside()
+//                    .placeholder(R.anim.progress_animation)
+                    .transform(new RoundImageTransformation(getActivity())).into(img_bill);
+            Bitmap myBitmap = BitmapFactory.decodeFile(filenya.getAbsolutePath());
+            img_bill.setImageBitmap(myBitmap);
+        }
+        else {
+            Bitmap myBitmap = BitmapFactory.decodeFile(filenya.getAbsolutePath());
+            img_bill.setImageBitmap(myBitmap);
+        }
+
+    }
+
     AdapterView.OnItemLongClickListener listSourceItemLongClickListener
             = new AdapterView.OnItemLongClickListener(){
 
@@ -202,7 +262,7 @@ public class CameraFragment extends Fragment {
                     0);    //flags
 
             commentMsg = v.getTag() + " : onLongClick.\n";
-            comments.setText(commentMsg);
+//            comments.setText(commentMsg);
 
             return true;
         }};
@@ -246,33 +306,33 @@ public class CameraFragment extends Fragment {
                     {
                         commentMsg += v.getTag()
                                 + " : ACTION_DRAG_STARTED accepted.\n";
-                        comments.setText(commentMsg);
+//                        comments.setText(commentMsg);
                         return true; //Accept
                     }else{
                         commentMsg += v.getTag()
                                 + " : ACTION_DRAG_STARTED rejected.\n";
-                        comments.setText(commentMsg);
+//                        comments.setText(commentMsg);
                         return false; //reject
                     }
                 case DragEvent.ACTION_DRAG_ENTERED:
                     commentMsg += v.getTag() + " : ACTION_DRAG_ENTERED.\n";
-                    comments.setText(commentMsg);
+//                    comments.setText(commentMsg);
                     return true;
                 case DragEvent.ACTION_DRAG_LOCATION:
                     commentMsg += v.getTag() + " : ACTION_DRAG_LOCATION - "
                             + event.getX() + " : " + event.getY() + "\n";
-                    comments.setText(commentMsg);
+//                    comments.setText(commentMsg);
                     return true;
                 case DragEvent.ACTION_DRAG_EXITED:
                     commentMsg += v.getTag() + " : ACTION_DRAG_EXITED.\n";
-                    comments.setText(commentMsg);
+//                    comments.setText(commentMsg);
                     return true;
                 case DragEvent.ACTION_DROP:
                     // Gets the item containing the dragged data
                     ClipData.Item item = event.getClipData().getItemAt(0);
 
                     commentMsg += v.getTag() + " : ACTION_DROP" + "\n";
-                    comments.setText(commentMsg);
+//                    comments.setText(commentMsg);
 
                     //If apply only if drop on buttonTarget
                     if(v == targetLayout){
@@ -280,7 +340,7 @@ public class CameraFragment extends Fragment {
 
                         commentMsg += "Dropped item - "
                                 + droppedItem + "\n";
-                        comments.setText(commentMsg);
+//                        comments.setText(commentMsg);
 
                         droppedList.add(droppedItem);
                         droppedAdapter.notifyDataSetChanged();
@@ -294,15 +354,15 @@ public class CameraFragment extends Fragment {
                 case DragEvent.ACTION_DRAG_ENDED:
                     if (event.getResult()){
                         commentMsg += v.getTag() + " : ACTION_DRAG_ENDED - success.\n";
-                        comments.setText(commentMsg);
+//                        comments.setText(commentMsg);
                     } else {
                         commentMsg += v.getTag() + " : ACTION_DRAG_ENDED - fail.\n";
-                        comments.setText(commentMsg);
+//                        comments.setText(commentMsg);
                     };
                     return true;
                 default: //unknown case
                     commentMsg += v.getTag() + " : UNKNOWN !!!\n";
-                    comments.setText(commentMsg);
+//                    comments.setText(commentMsg);
                     return false;
 
             }

@@ -4,59 +4,44 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-    <TextView
+    <LinearLayout
+        android:id="@+id/layout_bill"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="HELLO" />
+        android:weightSum="1"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:background="@color/White"
+            android:cropToPadding="true"
+            android:id="@+id/img_bill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:padding="10dp"
+            android:layout_weight="0.5"/>
+
+        <ListView
+            android:id="@+id/sourcelist"
+            android:layout_weight="0.5"
+            android:layout_width="wrap_content"
+            android:layout_height="300dp"/>
+    </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/targetlayout"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="horizontal" >
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:orientation="vertical" >
-            <ScrollView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
-                <TextView
-                    android:id="@+id/comments"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content" />
-            </ScrollView>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:orientation="vertical" >
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Drag Source" />
-            <ListView
-                android:id="@+id/sourcelist"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"/>
-
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/targetlayout"
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:orientation="vertical" >
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Drop Target" />
-            <ListView
-                android:id="@+id/targetlist"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout_bill"
+        android:orientation="vertical" >
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Drop Target" />
+        <ListView
+            android:id="@+id/targetlist"
+            android:layout_width="fill_parent"
+            android:layout_height="300dp"/>
     </LinearLayout>
 
 </LinearLayout>
