@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#952A3C</color>
+    <color name="colorPrimaryDark">#942B39</color>
+    <color name="colorAccent">#DA2625</color>
+    <color name="fab_color">#E12929</color>
+    <color name="background_card">#fff</color>
+    <color name="theme_accent">#E12929</color>
+    <color name="darkgray">#444440</color>
+    <color name="green">#04c104</color>
+    <color name="White">#ffffff</color>
+</resources>

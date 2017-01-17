@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <LinearLayout
+            android:id="@+id/linear_full"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            android:layout_below="@+id/logo_billsplit"
+            android:weightSum="1">
+
+        <LinearLayout
+            android:id="@+id/linearlogin"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            android:layout_below="@+id/logo_billsplit"
+            android:weightSum="1">
+
+            <!--  NickName Label -->
+
+            <ImageView
+                android:layout_width="144dp"
+                android:layout_height="298dp"
+                fbutton:srcCompat="@drawable/bills"
+                android:id="@+id/imageBill" />
+
+            <LinearLayout
+                android:id="@+id/linearlogin2"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="300dp"
+                android:paddingTop="20dp"
+                android:paddingLeft="24dp"
+                android:paddingRight="24dp"
+                android:layout_below="@+id/logo_billsplit"
+                android:weightSum="1">
+
+                <!-- Button Submit -->
+                <info.hoang8f.widget.FButton
+                    android:id="@+id/btn_submit1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="30000"
+                    android:textColor="#fff"
+                    android:textSize="18sp"
+                    android:padding="24dp"
+                    android:layout_gravity="center_horizontal|bottom"
+                    fbutton:buttonColor="#952A3C"
+                    fbutton:shadowColor="#942B39"
+                    fbutton:shadowEnabled="true"
+                    fbutton:shadowHeight="5dp"
+                    fbutton:cornerRadius="5dp"
+                    android:layout_weight="0.07" />
+
+                <!-- Button Submit -->
+                <info.hoang8f.widget.FButton
+                    android:id="@+id/btn_submit2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="100000"
+                    android:textColor="#fff"
+                    android:textSize="18sp"
+                    android:padding="24dp"
+                    android:layout_gravity="center_horizontal|bottom"
+                    fbutton:buttonColor="#952A3C"
+                    fbutton:shadowColor="#942B39"
+                    fbutton:shadowEnabled="true"
+                    fbutton:shadowHeight="5dp"
+                    fbutton:cornerRadius="5dp"
+                    android:layout_weight="0.07" />
+
+                <!-- Button Submit -->
+                <info.hoang8f.widget.FButton
+                    android:id="@+id/btn_submit3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="15000"
+                    android:textColor="#fff"
+                    android:textSize="18sp"
+                    android:padding="24dp"
+                    android:layout_gravity="center_horizontal|bottom"
+                    fbutton:buttonColor="#952A3C"
+                    fbutton:shadowColor="#942B39"
+                    fbutton:shadowEnabled="true"
+                    fbutton:shadowHeight="5dp"
+                    fbutton:cornerRadius="5dp"
+                    android:layout_weight="0.07" />
+
+                <!-- Button Submit -->
+                <info.hoang8f.widget.FButton
+                    android:id="@+id/btn_submit4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="48000"
+                    android:textColor="#fff"
+                    android:textSize="18sp"
+                    android:padding="24dp"
+                    android:layout_gravity="center_horizontal|bottom"
+                    fbutton:buttonColor="#952A3C"
+                    fbutton:shadowColor="#942B39"
+                    fbutton:shadowEnabled="true"
+                    fbutton:shadowHeight="5dp"
+                    fbutton:cornerRadius="5dp"
+                    android:layout_weight="0.06" />
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linearteman"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            android:layout_below="@+id/logo_billsplit"
+            android:weightSum="1">
+            <!-- Button Submit -->
+            <info.hoang8f.widget.FButton
+                android:id="@+id/btn_total1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="#fff"
+                android:textSize="18sp"
+                android:padding="24dp"
+                android:layout_gravity="center_horizontal|bottom"
+                fbutton:buttonColor="@color/fbutton_default_shadow_color"
+                fbutton:shadowColor="@color/fbutton_default_shadow_color"
+                fbutton:shadowEnabled="true"
+                fbutton:shadowHeight="5dp"
+                fbutton:cornerRadius="5dp" />
+            <!-- Button Submit -->
+            <info.hoang8f.widget.FButton
+                android:id="@+id/btn_total2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="#fff"
+                android:textSize="18sp"
+                android:padding="24dp"
+                android:layout_gravity="center_horizontal|bottom"
+                fbutton:buttonColor="@color/fbutton_color_orange"
+                fbutton:shadowColor="@color/fbutton_color_orange"
+                fbutton:shadowEnabled="true"
+                fbutton:shadowHeight="5dp"
+                fbutton:cornerRadius="5dp" />
+            <!-- Button Submit -->
+            <info.hoang8f.widget.FButton
+                android:id="@+id/btn_total3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="#fff"
+                android:textSize="18sp"
+                android:padding="24dp"
+                android:layout_gravity="center_horizontal|bottom"
+                fbutton:buttonColor="@color/fbutton_color_green_sea"
+                fbutton:shadowColor="@color/fbutton_color_green_sea"
+                fbutton:shadowEnabled="true"
+                fbutton:shadowHeight="5dp"
+                fbutton:cornerRadius="5dp" />
+        </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>

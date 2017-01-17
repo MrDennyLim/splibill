@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <LinearLayout
+            android:id="@+id/linearlogin"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="50dp"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            android:weightSum="1"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true">
+
+            <EditText android:id="@+id/merchant"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:hint="Merchant" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="339dp"
+                android:layout_height="match_parent">
+
+                <!--  Menu Label -->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="117dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp">
+
+                    <EditText android:id="@+id/input_menu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:hint="Menu"
+                        android:inputType="textEmailAddress"/>
+                </android.support.design.widget.TextInputLayout>
+
+                <!--  Quantity Label -->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="93dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp">
+
+                    <EditText android:id="@+id/input_qty"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:hint="Quantity" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <!--  Price Label -->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="93dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp">
+
+                    <EditText android:id="@+id/input_price"
+                        android:layout_width="111dp"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:hint="Price" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <!-- Button Submit -->
+
+            </LinearLayout>
+
+            <info.hoang8f.widget.FButton
+                android:id="@+id/btn_submit"
+                android:layout_width="138dp"
+                android:layout_height="wrap_content"
+                android:text="Add More..."
+                android:textColor="#fff"
+                android:textSize="18sp"
+                android:layout_marginTop="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginBottom="24dp"
+                android:padding="24dp"
+                android:layout_gravity="center_horizontal|bottom"
+                fbutton:buttonColor="#952A3C"
+                fbutton:shadowColor="#942B39"
+                fbutton:shadowEnabled="true"
+                fbutton:shadowHeight="5dp"
+                fbutton:cornerRadius="5dp"
+                />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</ScrollView>

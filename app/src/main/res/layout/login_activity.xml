@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <LinearLayout
+            android:id="@+id/linearlogin"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="50dp"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            android:background="@drawable/login"
+            android:layout_below="@+id/logo_billsplit"
+            android:weightSum="1">
+
+            <!--  NickName Label -->
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="47dp"
+                fbutton:srcCompat="@drawable/splitbill"
+                android:id="@+id/imageView" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                app:hintTextAppearance="@style/TextAppearence.App.TextInputLayout"
+                android:textColorHint="#fff">
+                <EditText android:id="@+id/input_nick"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nickname"
+                    android:inputType="text"
+                    android:textColor="#fff"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <!--  Phone Label -->
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                app:hintTextAppearance="@style/TextAppearence.App.TextInputLayout"
+                android:textColorHint="#fff">
+                <EditText android:id="@+id/input_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:hint="Phone"
+                    android:inputType="phone"
+                    android:textColor="#fff" />
+            </android.support.design.widget.TextInputLayout>
+
+            <!--  Email Label -->
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                app:hintTextAppearance="@style/TextAppearence.App.TextInputLayout"
+                android:textColorHint="#fff">
+                <EditText android:id="@+id/input_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:textColor="#fff" />
+            </android.support.design.widget.TextInputLayout>
+
+            <!-- Button Submit -->
+            <info.hoang8f.widget.FButton
+                android:id="@+id/btn_submit"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="REGISTER"
+                android:textColor="#fff"
+                android:textSize="18sp"
+                android:layout_marginTop="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginBottom="24dp"
+                android:padding="24dp"
+                android:layout_gravity="center_horizontal|bottom"
+                fbutton:buttonColor="#952A3C"
+                fbutton:shadowColor="#942B39"
+                fbutton:shadowEnabled="true"
+                fbutton:shadowHeight="5dp"
+                fbutton:cornerRadius="5dp"
+                />
+
+            <TextView android:id="@+id/verion"
+                android:layout_below="@+id/linearlogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Demo Version"
+                android:gravity="center"
+                android:textColor="#000"
+                android:textSize="12sp"
+                android:textStyle="italic"
+                android:layout_alignParentBottom="true"
+                android:paddingTop="30dp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</ScrollView>
