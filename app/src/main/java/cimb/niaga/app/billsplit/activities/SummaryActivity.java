@@ -23,9 +23,20 @@ import android.widget.ExpandableListView.OnGroupExpandListener;
 import android.widget.Toast;
 
 import com.google.firebase.iid.FirebaseInstanceId;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.MySSLSocketFactory;
+import com.loopj.android.http.RequestParams;
+
+import org.apache.http.Header;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import cimb.niaga.app.billsplit.R;
 import cimb.niaga.app.billsplit.adapter.ExpandableListAdapter;
+import cimb.niaga.app.billsplit.corecycle.FirebaseAPI;
+import cimb.niaga.app.billsplit.corecycle.MyAPIClient;
+import dmax.dialog.SpotsDialog;
 
 public class SummaryActivity extends AppCompatActivity {
 
@@ -122,6 +133,47 @@ public class SummaryActivity extends AppCompatActivity {
         Toast.makeText(SummaryActivity.this, "Current token ["+tkn+"]",
                 Toast.LENGTH_LONG).show();
         Log.d("App", "Token ["+tkn+"]");
+
+        RequestParams params = new RequestParams();
+        params.put("to", tkn);
+        params.put("title", "tes");
+        params.put("body", "Anda memiliki bill sebesar Rp.15000 kepada David");
+        AsyncHttpClient client = new AsyncHttpClient();
+        client.setSSLSocketFactory(MySSLSocketFactory.getFixedSocketFactory());
+        client.setTimeout(FirebaseAPI.HTTP_DEFAULT_TIMEOUT);
+
+        Log.d("denny", params.toString());
+
+        client.post(FirebaseAPI.headaddress, params, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                Log.d("denny", response.toString());
+
+                try {
+                    JSONObject object = response;
+
+                    String error_code = object.getString("errorCode");
+
+                    if (error_code.equals("00")) {
+                        // go to the main activity
+                        Intent nextActivity = new Intent(SummaryActivity.this, HomeActivity.class);
+                        startActivity(nextActivity);
+
+                        // make sure splash screen activity is gone
+                        SummaryActivity.this.finish();
+                        //dialog.dismiss();
+                    } else {
+                        Intent nextActivity = new Intent(SummaryActivity.this, HomeActivity.class);
+                        startActivity(nextActivity);
+
+                        // make sure splash screen activity is gone
+                        SummaryActivity.this.finish();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     /*

@@ -141,7 +141,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Toast.makeText(getApplication(), "Settings", Toast.LENGTH_LONG).show();
-                Intent i = new Intent(HomeActivity.this, OCRActivity.class);
+                Intent i = new Intent(HomeActivity.this, SummaryActivity.class);
                 Toast.makeText(getApplication(), "Creating Bill..", Toast.LENGTH_LONG).show();
                 startActivity(i);
             }
