@@ -91,6 +91,16 @@
                 android:value=".activities.HomeActivity" />
             />
 
+        <activity android:name=".activities.ProfileActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:parentActivityName=".activities.HomeActivity"/>
+        <!-- Parent activity meta-data to support 4.0 and lower -->
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".activities.HomeActivity" />
+        />
     </application>
 
 </manifest>

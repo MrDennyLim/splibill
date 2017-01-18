@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:padding="15dp">
+    android:padding="15dp"
+    android:background="@drawable/background">
 
     <LinearLayout
         android:orientation="vertical"
@@ -13,7 +14,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/cardview_dark_background"
+            android:textColor="@color/colorPrimaryDark"
             android:id="@+id/total_owed"
             android:text="Total Owing:"
             android:textStyle="normal|bold|italic"
@@ -40,7 +41,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/cardview_dark_background"
+            android:textColor="@color/colorPrimaryDark"
             android:id="@+id/total_owing_detail"
             android:text="Detail Owing:"
             android:textStyle="normal|bold|italic"

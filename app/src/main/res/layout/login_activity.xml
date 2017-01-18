@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:fbutton="http://schemas.android.com/apk/res-auto"
-    xmlns:app="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/tools"
+    android:background="@drawable/login">
 
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -13,20 +14,21 @@
         <LinearLayout
             android:id="@+id/linearlogin"
             android:orientation="vertical"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="50dp"
             android:paddingLeft="24dp"
             android:paddingRight="24dp"
-            android:background="@drawable/login"
-            android:layout_below="@+id/logo_billsplit"
-            android:weightSum="1">
+            android:scaleType = "centerCrop"
+            android:weightSum="1"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true">
 
             <!--  NickName Label -->
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="47dp"
+                android:layout_width="match_parent"
+                android:layout_height="114dp"
                 fbutton:srcCompat="@drawable/splitbill"
                 android:id="@+id/imageView" />
 
@@ -84,8 +86,8 @@
                 android:id="@+id/btn_submit"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="REGISTER"
-                android:textColor="#fff"
+                android:text="Activate"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp"
                 android:layout_marginTop="24dp"
                 android:layout_marginRight="24dp"
@@ -93,7 +95,7 @@
                 android:layout_marginBottom="24dp"
                 android:padding="24dp"
                 android:layout_gravity="center_horizontal|bottom"
-                fbutton:buttonColor="#952A3C"
+                fbutton:buttonColor="#fff"
                 fbutton:shadowColor="#942B39"
                 fbutton:shadowEnabled="true"
                 fbutton:shadowHeight="5dp"
@@ -106,7 +108,7 @@
                 android:layout_height="wrap_content"
                 android:text="Demo Version"
                 android:gravity="center"
-                android:textColor="#000"
+                android:textColor="#fff"
                 android:textSize="12sp"
                 android:textStyle="italic"
                 android:layout_alignParentBottom="true"
