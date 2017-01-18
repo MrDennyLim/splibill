@@ -64,8 +64,6 @@ import cimb.niaga.app.billsplit.corecycle.MyAPIClient;
 import cimb.niaga.app.billsplit.corecycle.MyPicasso;
 import cimb.niaga.app.billsplit.corecycle.RoundImageTransformation;
 
-import static cimb.niaga.app.billsplit.activities.CameraActivity.ALLOW_KEY;
-
 /**
  * Created by Denny on 1/14/2017.
  */

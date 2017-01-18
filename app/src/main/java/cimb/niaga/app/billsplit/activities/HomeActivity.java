@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +19,7 @@ import cimb.niaga.app.billsplit.R;
 import cimb.niaga.app.billsplit.corecycle.Fab;
 import cimb.niaga.app.billsplit.fragment.CameraFragment;
 import cimb.niaga.app.billsplit.fragment.HomeFragment;
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 /**
  * Created by Denny on 1/10/2017.
@@ -121,19 +123,19 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Toast.makeText(getApplication(), "Add New Bill", Toast.LENGTH_LONG).show();
-//                Intent i = new Intent(HomeActivity.this, CameraActivity.class);
-//                Toast.makeText(getApplication(), "Opening Camera..", Toast.LENGTH_LONG).show();
-//                startActivity(i);
+                Intent i = new Intent(HomeActivity.this, CameraActivity.class);
+                Toast.makeText(getApplication(), "Opening Camera..", Toast.LENGTH_LONG).show();
+                startActivity(i);
                 // finish();
 
-                Toast.makeText(getApplication(), "Opening Camera..", Toast.LENGTH_LONG).show();
-
-                CameraFragment camera = new CameraFragment();
-                fragmentManager = getSupportFragmentManager();
-                android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.content, camera);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+//                Toast.makeText(getApplication(), "Opening Camera..", Toast.LENGTH_LONG).show();
+//
+//                CameraFragment camera = new CameraFragment();
+//                fragmentManager = getSupportFragmentManager();
+//                android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                fragmentTransaction.replace(R.id.content, camera);
+//                fragmentTransaction.addToBackStack(null);
+//                fragmentTransaction.commit();
                 materialSheetFab.hideSheet();
             }
         });
@@ -154,5 +156,25 @@ public class HomeActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(color);
         }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+                    .setTitleText("Are you sure want to quit?")
+                    .setCancelText("No")
+                    .setConfirmText("Yes")
+                    .showCancelButton(true)
+                    .setCancelClickListener(null)
+                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sweetAlertDialog) {
+                            finish();
+                        }
+                    })
+                    .show();
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

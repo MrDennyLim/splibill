@@ -9,8 +9,8 @@ import android.util.Log;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
-import com.google.firebase.messaging.FirebaseMessagingService;
-import com.google.firebase.messaging.RemoteMessage;
+//import com.google.firebase.messaging.FirebaseMessagingService;
+//import com.google.firebase.messaging.RemoteMessage;
 
 import cimb.niaga.app.billsplit.R;
 

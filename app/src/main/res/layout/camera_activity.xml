@@ -1,13 +1,54 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
 
-    <FrameLayout
-        android:id="@+id/content"
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-    </FrameLayout>
+        android:layout_height="wrap_content"
+        android:id="@+id/layout_bill"
+        android:layout_weight="0.1">
 
+            <ImageView
+                android:background="@color/White"
+                android:cropToPadding="true"
+                android:id="@+id/img_bill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"/>
+
+            <ListView
+                android:id="@+id/sourcelist"
+                android:layout_weight="0.5"
+                android:layout_width="wrap_content"
+                android:layout_height="150dp"/>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="150px"
+        >
+
+        <info.hoang8f.widget.FButton
+            android:id="@+id/btn_submit"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Add New Item"
+            android:textColor="#fff"
+            android:textSize="18sp"
+            android:layout_marginRight="24dp"
+            android:layout_marginLeft="24dp"
+            fbutton:buttonColor="#952A3C"
+            fbutton:shadowColor="#942B39"
+            fbutton:shadowEnabled="true"
+            fbutton:shadowHeight="5dp"
+            fbutton:cornerRadius="5dp" />
+
+    </LinearLayout>
 </LinearLayout>
